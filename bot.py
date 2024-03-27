@@ -58,6 +58,7 @@ def handleMessage(msg):
             model=model_name,
             messages=messages,
             stream=True,
+            timeout=60
         )
         content = ""
         last_len = 1
