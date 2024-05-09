@@ -32,14 +32,17 @@ function addSensei(msg,stat) {
     if (moment().diff(lastMsgTime,"minutes")>=10 && stat){
         addBanner(moment().locale('zh-cn').format("HH:mm"));
     }
-    var newDiv = document.createElement('div');
-    newDiv.className = "momo-msg-sensei";
-    newDiv.innerHTML = `
+    var messages = msg.split("\\");
+    for (let j = 0; j < messages.length; j++) {
+        var newDiv = document.createElement('div');
+        newDiv.className = "momo-msg-sensei";
+        newDiv.innerHTML = `
         <div class="momo-msg-sensei">
-            <div class="momo-msg momo-msg-first" style="width: fit-content;">${msg}</div>
+            <div class="momo-msg momo-msg-first" style="width: fit-content;">${messages[j]}</div>
         </div>
-    `;
-    momoBody.appendChild(newDiv);
+        `;
+        momoBody.appendChild(newDiv);
+    }
     momoBody.scrollTop = momoBody.scrollHeight;
     console.log(`sensei ${stat}:${msg}`);
     if (stat) {

@@ -13,13 +13,13 @@ config.read("bot.conf")
 
 prompt = open(config["bot"].get("prompt_file","mika.txt"),encoding="utf-8").read()
 original_messages = [{"role": "system", "content": prompt},
-              {"role": "assistant", "content": "Sensei欢迎回来！我可是个乖乖看家的好孩子哦"}]
+              {"role": "assistant", "content": "Sensei欢迎回来！\\我可是个乖乖看家的好孩子哦"}]
 messages = original_messages.copy()
 lastMessageTime = 0
 inputLock = False
 
 openai.api_key = config["openai"]["api_key"]
-openai.base_url = config["openai"].get("base_url", "https://api.openai.com/v1/")
+openai.base_url = config["openai"].get("api_url", "https://api.openai.com/v1/")
 model_name = config["openai"].get("model", "gpt-4")
 
 def countToken():
